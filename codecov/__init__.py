@@ -559,9 +559,9 @@ def main(*argv, **kwargs):
 
         # Build TOC
         # ---------
-        toc = str((try_to_run('cd %s && git ls-files' % root) or
+        toc = str((try_to_run('git -C %s ls-files' % root) or
                    try_to_run('git ls-files') or
-                   try_to_run('cd %s && hg locate' % root) or
+                   try_to_run('hg --cwd %s locate') or
                    try_to_run('hg locate') or '').strip())
 
         if codecov.prefix:
